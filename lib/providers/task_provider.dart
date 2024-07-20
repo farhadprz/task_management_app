@@ -21,10 +21,10 @@ class TaskProvider with ChangeNotifier {
       version: 1,
     );
 
-    _fetchTasks();
+    fetchTasks();
   }
 
-  Future<void> _fetchTasks() async {
+  Future<void> fetchTasks() async {
     final List<Map<String, dynamic>> maps = await _database.query('tasks');
     _tasks = List.generate(
       maps.length,
@@ -41,7 +41,7 @@ class TaskProvider with ChangeNotifier {
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
 
-    _fetchTasks();
+    fetchTasks();
   }
 
   Future<void> updateTask(Task task) async {
@@ -52,7 +52,7 @@ class TaskProvider with ChangeNotifier {
       whereArgs: [task.id],
     );
 
-    _fetchTasks();
+    fetchTasks();
   }
 
   Future<void> deleteTask(int id) async {
@@ -62,6 +62,6 @@ class TaskProvider with ChangeNotifier {
       whereArgs: [id],
     );
 
-    _fetchTasks();
+    fetchTasks();
   }
 }
