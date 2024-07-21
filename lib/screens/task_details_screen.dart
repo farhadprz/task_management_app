@@ -22,6 +22,9 @@ class TaskDetailsScreen extends StatelessWidget {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditTaskScreen(task: task)));
               if(result == true){
                 Provider.of<TaskProvider>(context, listen: false).fetchTasks();
+                // context.read<TaskProvider>().fetchTasks(); //which makes the widget listen to changes on TaskProvider
+                // context.watch<TaskProvider>().fetchTasks(); //which returns TaskProvider without listening to it === Consumer
+                // final name = context.select((Person p) => p.name); //which allows a widget to listen to only a small part of TaskProvider === Selector
               }
             },
             icon: const Icon(Icons.edit),

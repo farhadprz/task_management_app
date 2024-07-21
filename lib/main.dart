@@ -12,7 +12,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    // Use Provider when you need to provide a single instance of an object that does not need to notify other parts of the app about changes.
+    // Use ChangeNotifierProvider when you need to provide a state object that will change over time and you want to update the UI or other
+    // parts of your app when these changes occur.
+    return ChangeNotifierProvider(// It is used to provide and manage a class that extends ChangeNotifier.
       create: (context) => TaskProvider(),
       child: MaterialApp(
         title: 'Task Management App',
